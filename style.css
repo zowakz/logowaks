@@ -1,0 +1,406 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+header .logo {
+    height: 50px; /* Ukuran default logo di layar besar */
+    transition: transform 0.3s;
+}
+
+header .logo:hover {
+    transform: scale(1.1); /* efek zoom saat hover */
+}
+
+/* Mengecilkan logo pada layar kecil */
+@media (max-width: 768px) {
+    header .logo {
+        height: 35px; /* Ukuran logo yang lebih kecil di layar kecil */
+    }
+}
+
+header h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    animation: titleAnim 2s infinite alternate;
+}
+
+header nav a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1em;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #0d00ff;
+}
+
+@keyframes titleAnim {
+    0% { color: #0d00ff; }
+    100% { color: #5463c6; }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh; /* Atur tinggi section hero */
+    display: flex; /* Mengaktifkan flexbox */
+    flex-direction: column; /* Mengatur arah kolom */
+    justify-content: center; /* Memusatkan secara vertikal */
+    align-items: center; /* Memusatkan secara horizontal */
+    color: white; /* Warna teks */
+    text-align: center; /* Pusatkan teks */
+}
+
+.background-video {
+    position: absolute; /* Menempatkan video secara absolut */
+    top: 50%; /* Menempatkan video di tengah secara vertikal */
+    left: 50%; /* Menempatkan video di tengah secara horizontal */
+    min-width: 100%; /* Memastikan video lebar 100% */
+    min-height: 100%; /* Memastikan video tinggi 100% */
+    width: auto; /* Mengatur lebar otomatis */
+    height: auto; /* Mengatur tinggi otomatis */
+    transform: translate(-50%, -50%); /* Menyelaraskan video tepat di tengah */
+    z-index: -1; /* Memastikan video berada di belakang elemen lain */
+}
+
+.hero h2 {
+    font-size: 2.5em; /* Ukuran default teks */
+    position: relative;
+    opacity: 0; /* Mulai dengan transparan */
+    transform: translateY(40px);
+    font-size: 2.5em;
+    color: #0d00ff;
+    padding: 10px;
+    border-radius: 5px;
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Durasi diperpanjang menjadi 1.5 detik */
+}
+
+/* Mengecilkan ukuran teks pada layar kecil */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 1.8em; /* Ukuran teks yang lebih kecil di layar kecil */
+    }
+}
+
+h2.show {
+    opacity: 1; /* Muncul sepenuhnya */
+    transform: translateY(0); /* Kembali ke posisi normal */
+}
+
+.hero p {
+    font-size: 1.2em;
+    max-width: 600px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Mengisi lebar penuh */
+    height: 100%; /* Mengisi tinggi penuh */
+    background-color: rgba(0, 0, 0, 0.5); /* Warna hitam dengan transparansi */
+    z-index: 1; /* Overlay di bawah teks */
+}
+
+.hero h2, .hero p {
+    position: relative;
+    z-index: 2; /* Agar teks tetap terlihat di depan video */
+}
+
+.btn {
+    position: relative; /* Menjadikan tombol berada di posisi relatif */
+    z-index: 1; /* Pastikan tombol di atas overlay */
+    background-color: #0d00ff; /* Ganti warna sesuai kebutuhan */
+    color: white; /* Ganti warna teks sesuai kebutuhan */
+    padding: 10px 20px; /* Tambahkan padding untuk mempercantik tampilan tombol */
+    border: none;
+    border-radius: 5px; /* Mengatur sudut tombol */
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes backgroundAnim {
+    0% { background: #111111; }
+    100% { background: #333333; }
+}
+
+/* About Section */
+.about {
+    padding: 60px 40px;
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #0d00ff;
+}
+
+.about p {
+    font-size: 1.1em;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Projects Section */
+.projects {
+    padding: 60px 40px;
+    background-color: #121212;
+    text-align: center;
+}
+
+.projects h2 {
+    font-size: 2em;
+    color: #0d00ff;
+    margin-bottom: 20px;
+}
+
+.project-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.project-item {
+    width: 220px; /* Ukuran default item proyek */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid transparent; /* Menyiapkan border */
+    transition: transform 0.6s ease, box-shadow 0.6s ease, border 0.3s ease;
+}
+
+/* Media query untuk layar kecil */
+@media (max-width: 768px) {
+    .project-item {
+        width: 100px; /* Ukuran item proyek menjadi lebih kecil di layar kecil */
+        padding: 5px; /* Sesuaikan padding jika perlu */
+    }
+
+
+    
+    .project-item img {
+        width: 80%; /* Ukuran gambar yang lebih kecil di layar kecil */
+        max-width: 200px; /* Batasi lebar maksimum gambar */
+    }
+    
+    .project-item {
+        width: 90%; /* Lebar item proyek di layar kecil */
+    }
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid #007bff; /* Outline biru pada hover */
+}
+
+.project-item:hover .image-frame {
+    transform: translateY(-10);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.project-item:hover img {
+    transform: scale(1.05);
+}
+
+.project-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Contact Section */
+.contact {
+    padding: 60px 40px;
+    background-color: #1a1a1a;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2em;
+    color: #0d00ff; /* Warna judul */
+    transform: translateY(40px); /* Geser sedikit ke bawah */
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Durasi 1.5 detik */
+}
+
+.contact h2.show {
+    opacity: 1; /* Muncul sepenuhnya */
+    transform: translateY(0); /* Kembali ke posisi normal */
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column; /* Menyusun input secara vertikal */
+    align-items: center; /* Memusatkan input */
+    margin-top: 20px; /* Jarak atas dari judul */
+    transform: translateY(40px); /* Geser sedikit ke bawah */
+    transition: opacity 1.5s ease-in-out 0.5s, transform 1.5s ease-in-out 0.5s; /* Durasi 1.5 detik, dengan delay 0.5 detik */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #ffffff;
+}
+
+.contact-form button {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Menyusun elemen di tengah */
+    padding: 10px 20px;
+    color: #ffffff;
+    background-color: #FFD700;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.contact-form button:hover {
+    transform: scale(1.1);
+}
+
+.map-container {
+    margin-top: 100px;
+    border: 2px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Efek muncul dengan animasi fade-in */
+.project-item {
+    opacity: 0;
+    transform: translateX(20px); /* Bisa diubah menjadi translateX untuk efek slide dari samping */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Efek fade-in saat elemen muncul di viewport */
+.project-item.appear {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.logo {
+    position: relative; /* Posisi relatif untuk animasi */
+    opacity: 0; /* Mulai dengan transparan */
+    animation: fadeIn 1s forwards; /* Animasi muncul */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .project-grid {
+        flex-direction: column; /* Ubah menjadi kolom di layar kecil */
+        align-items: center; /* Pusatkan item */
+    }
+
+    .project-item {
+        width: 90%; /* Lebar penuh di layar kecil */
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 90%; /* Lebar penuh untuk input */
+    }
+}
+
+/* Hamburger Menu Style */
+.hamburger {
+    display: none; /* Sembunyikan di layar besar */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    transition: 0.3s;
+}
+
+/* Tampilkan hamburger menu dan sembunyikan nav pada layar kecil */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex; /* Tampilkan hamburger menu */
+    }
+
+    nav {
+        display: none; /* Sembunyikan menu utama pada layar kecil */
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        overflow: hidden;
+        transition: max-height 0.3s ease-in-out;
+        max-height: 0;
+    }
+
+    /* Menampilkan menu saat tombol hamburger diaktifkan */
+    nav.active {
+        display: flex;
+        max-height: 300px; /* Tentukan tinggi maksimum sesuai kebutuhan */
+    }
+}
+
+nav a {
+    padding: 15px 0;
+    border-bottom: 1px solid #333;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #333; /* Warna latar saat hover */
+}
